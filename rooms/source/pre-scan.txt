@@ -1,0 +1,5 @@
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-08-07 02:43 PST
+No results
+
+Searching Webmin would render its default port at 10000
+Access the Webmin Admin Login Page using https://<victimIP>:10000

@@ -1,0 +1,16 @@
+#override port 22 on firefox access:config
+#found string on page source of homepage <base64>
+#found string on page source of /recovery.php <base32->hex->rot13>
+#extract steg from header.jpg
+#login
+#append ?cmd=<command> at the end of landing page
+-> <cat /home/jacks_password_list>
+-> save on a file and hydra user jack with the password list
+#login using creds
+#find user.jpg
+#scp from local machine
+->found user flag on user.jpg
+#find commands with suid bit
+->strings command runs with suid root
+->use strings command to find flag on /root/root.txt
+

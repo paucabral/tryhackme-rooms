@@ -1,0 +1,4 @@
+#Reveal hidden image from the original image using steghide
+->No passphrase is needed
+
+#Turn the exposure of the extracted image down to reveal the message

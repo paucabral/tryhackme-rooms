@@ -1,0 +1,26 @@
+#scan with gobuster
+#check css on /assets to find /sup3r_s3cre3t_flag
+#go to the sub url with java script disabled
+#check video and possibly use burpsuite to see backend or see your browser history to find where intermediary.php is redirecting to
+#go to the sub url and download Hot_Babe.png
+#use strings or cat on the image to reveal user and password list
+#Hydra to crack credentials
+->ftpuser:5iez1wGXKfPKQ
+#download txt file from ftp
+#use brainfuck decoder on txt file contents
+->eli:DSpDiM1wAEwid
+#ssh on machine using credentials
+#broadcast message reveals a message from gwendoline
+->find / -name "s3cr3t"
+#go to the directory
+#reveal text contents of hiddenfile
+->gwendoline:MniVCQVhQHUNI
+#su to gwendoline
+#get user flag on /home/gwendoline
+->THM{1107174691af9ff3681d2b5bdb5740b1589bae53}
+#sudo -l to reveal commands that can be run as root
+#use CVE-2019-14278
+->sudo -u#-1 /usr/bin/vi /home/gwendoline/user.txt
+->spawn shell using :sh
+#get root flag on /root
+->THM{8d6f163a87a1c80de27a4fd61aef0f3a0ecf9161}

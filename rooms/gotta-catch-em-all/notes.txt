@@ -1,0 +1,31 @@
+#view page source
+->found: <pokemon>:<hack_the_pokemon>
+->use as ssh credentials: 'pokemon:hack_the_pokemon'
+
+#ls -laR to find all files in /home/pokemon
+->found Videos/Gotta/Catch/Them/ALL\!/Could_this_be_what_Im_looking_for\?.cplusplus
+->cat to find ash credentials: 'ash:pikapika'
+
+#su on ash
+
+#with ash sudo privileges, cat roots-pokemon.txt
+->Root's Favorite Pokemon: Pikachu!
+
+#use find command "*-type.txt" to locate the flags easier
+
+#find water-type 
+->flag on /var/www/html/water-type.txt
+->raw: Ecgudfxq_EcGmP{Ecgudfxq}
+->decode(rot by -12): Squirtle_SqUaD{Squirtle}
+
+#find grass-type
+->cd on /home/pokemon/
+->unzip P0kemOn.zip
+-flag on /home/pokemon/Desktop/P0kEmOn/grass-type.txt
+->raw: 50 6f 4b 65 4d 6f 4e 7b 42 75 6c 62 61 73 61 75 72 7d
+->decode(hex): PoKeMoN{Bulbasaur.
+
+#find fire-type
+->flag on /etc/why_am_i_here?/fire-type.txt
+->raw: UDBrM20wbntDaGFybWFuZGVyfQ==
+->decode(base64): P0k3m0n{Charmander}

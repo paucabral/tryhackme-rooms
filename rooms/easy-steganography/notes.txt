@@ -1,0 +1,22 @@
+#Flag1
+-image reverse search on tineye
+-compare images using `diff -a flag1.jpeg searched.jpeg | hexdump -C`
+-find the different string
+-answer: St3g4n0
+
+#Flag2
+-check image using binwalk
+-extract files within the image using `binwalk --d='.*' flag2.jpeg`
+-go to the extracted folder
+-open the image extracted
+-answer: algorithm
+
+#Flag3
+-check image using strings
+-find the line: The passphrase to this challenge is Math
+-answer: Math
+
+#Flag4
+-check image using strings
+-find the line: ">TryHardered</
+-answer: TryHardered

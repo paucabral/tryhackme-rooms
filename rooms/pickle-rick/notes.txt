@@ -1,0 +1,32 @@
+#Nmap
+-Apache@port80
+-SSH@port22
+
+#Viewing landing page source code
+-Username: R1ckRul3s
+
+#Viewing /robots.txt
+-Text Only
+->Wubbalubbadubdub
+
+#Nikto
+-Found /login.php
+
+#Gobuster
+-Found:
+->assets
+->index.html
+->robots.txt
+
+#Login to /login.php
+R1ckRul3s:Wubbalubbadubdub
+
+#Using commands on /portal.php
+-cat does not work
+-nl works
+-everything can be run with sudo
+
+#Flag locations
+-landing directory (/var/www/html)
+-/home/rick
+-/root

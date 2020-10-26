@@ -1,0 +1,23 @@
+use session token on /admin
+->inspect element
+->storage tab
+->under cookies
+->highlight the address
+->click + button
+->set path name to 'SessionToken' and  path to '/'
+->reload the page to successfully login
+->get ssh key from admin page
+
+use john to bruteforce passphrase login
+->ssh2john the private key for user 'james'
+->use john to crack the passphrase
+->login on the machine
+
+use cron vulnerability
+->run linpeas to find the command overpaass.thm/downloads/src/buildscipt.sh running every 1m
+->linpeas reveals /etc/hosts is editable, change overpass.thm ip line to attacker ip
+->on attacker machine, create downloads/src directory with buildscipt.sh inside
+->write a reverse shell on buildscript.sh
+->setup a python fileserver where the created directory 'downloads' is located
+->on another terminal, use netcat to listen on the set port
+->wait for netcat to give root shell
