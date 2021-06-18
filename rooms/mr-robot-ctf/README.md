@@ -78,7 +78,7 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
   073403c8a58a1f80d943455fb30724b9
   ```
 
-<br>
+
 ### Flag 2
 1. After the GoBuster scan, a `/login` page and `/robots` directory was found. The `/robots` directory shows the content:
   ```
@@ -133,7 +133,7 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
   822c73956184f694993bede3eb39f959
   ```
 
-<br>
+
 ### Flag 3
 1. While using the account `robot`. Gain priveleged access using SUID binary from `nmap`.
 
