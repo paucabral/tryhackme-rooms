@@ -118,7 +118,7 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
   ```
   Using CrackStation (crackstation.net)
 
-                Hash	            Type	        Result
+                Hash    	            Type	        Result
   c3fcd3d76192e4007dfb496cca67e13b	md5	    abcdefghijklmnopqrstuvwxyz
   ```
 10. Spawn TTY shell in the target machine using Python.
@@ -128,6 +128,7 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 11. Login to `robot` account using `su robot` with the password: `abcdefghijklmnopqrstuvwxyz`.
  
  ***Credentials:*** `robot:abcdefghijklmnopqrstuvwxyz`
+
 12. Go to `/home/robot` directory and open `key-2-of-3.txt` file.
   ```
   822c73956184f694993bede3eb39f959
